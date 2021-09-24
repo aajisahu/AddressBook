@@ -77,7 +77,7 @@ class Address {
 	}
 
 
-	public void details() {
+	public Address details() {
 
 		Address obj = new Address();
 		Scanner sc = new Scanner(System.in);
@@ -110,14 +110,15 @@ class Address {
 
 
 		//printing users entered values
-		Log.info("Your Name is   :"+obj.getFirstName());
-		Log.info("Your Last Name :"+obj.getLastName());
-		Log.info("Your Name is   :"+obj.getAddress());
-		Log.info("Your Name is   :"+obj.getCity());
-		Log.info("Your Name is   :"+obj.getState());
-		Log.info("Your Name is   :"+obj.getMail());
-		Log.info("Your Name is   :"+obj.getZip());
-		Log.info("Your Name is   :"+obj.getPhoneNumber());
+		Log.info("Your First is   		 :"+obj.getFirstName());
+		Log.info("Your Last Name		 :"+obj.getLastName());
+		Log.info("Your Address is  		 :"+obj.getAddress());
+		Log.info("Your City is           :"+obj.getCity());
+		Log.info("Your State is          :"+obj.getState());
+		Log.info("Your Mail is           :"+obj.getMail());
+		Log.info("Your Zip is            :"+obj.getZip());
+		Log.info("Your Phone Number is   :"+obj.getPhoneNumber());
+		return obj;
 
 	}
 
@@ -131,37 +132,33 @@ public class AddressBook{
 	private static final Logger Log= LogManager.getLogger(AddressBook.class);
 	public static void main(String[] args) {
 		Log.info("Welcome to Address Book Management System");
-
+		
+		
+		
 		Address obj= new Address();
-		Log.info("Entered First person:");
-		obj.details();
-
+		Address arr[ ]= new Address [10];
+		
 		Scanner sc = new Scanner(System.in);
-		Log.info("Do you want to add more: Y/N");
-
-char ch = sc.next().charAt(0);
+		Log.info("How Many Number Person You Want to add:\n Maximum-10 allowed" );
+		int choice = sc.nextInt();
 	
+		if (choice<= 10) {
 		
-		//asking user to add another person address in address book
-		if ( ch =='y' || ch== 'Y') 
+			int cont=0,i=0;
+			//asking user to add another person address in address book
+			while(i<choice)
 			{
-				Log.info("Add Entered Second person:");
-				Address obj2= new Address();
-				obj2.details();
-				
+			
+				cont++;
+				Log.info("Person: "+cont +" :");
+				arr[cont]=obj.details();
+				i++;
 			}
-			else if (ch =='n' || ch== 'N') {
-				Log.info(":Thanku You:");
-						
-		}
-		
-			else {
-				Log.info("Invalid Input");
-			}
-				
 		
 	}
+		else {
+			Log.info("You Exeed limit");
+		}
 
-
-
+	}
 }
